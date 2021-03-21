@@ -2,16 +2,8 @@
   <thead>
     <li class="list-group-item">MARKALAR</li>
   </thead><br>
-    
-  
-    <li class="list-group-item list-group-item-primary">PEUGEOT</li>
-    <li class="list-group-item list-group-item-secondary">RENAULT</li>
-    <li class="list-group-item list-group-item-success">HYUNDAI</li>
-    <li class="list-group-item list-group-item-danger">CITROEN</li>
-    <li class="list-group-item list-group-item-warning">FIAT</li>
-    <li class="list-group-item list-group-item-info">DACIA</li>
-    <li class="list-group-item list-group-item-light">SKODA</li>
-  
+    <li *ngFor="let brand of brands" class="list-group-item list-group-item-light">{{brand.brandName}}</li>
+   
    
    
    
