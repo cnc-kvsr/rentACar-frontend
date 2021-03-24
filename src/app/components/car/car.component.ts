@@ -5,6 +5,7 @@ import { CarImage } from 'src/app/models/carImage';
 import { CarService } from 'src/app/services/car.service';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { CarImageService } from 'src/app/services/car-image.service';
 
 @Component({
   selector: 'app-car',
@@ -23,7 +24,8 @@ export class CarComponent implements OnInit {
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
-    private http:HttpClient
+    private http:HttpClient,
+    private carImageService:CarImageService
   ) {}
 
   title = 'ARABA LİSTESİ';
@@ -68,7 +70,9 @@ export class CarComponent implements OnInit {
   getCarDetails(carId: number) {
     this.carService.getCarDetails(carId).subscribe((response) => {
       this.cars = response.data;
+      console.log(response.data);
       this.dataLoaded = true;
     });
   }
+
 }

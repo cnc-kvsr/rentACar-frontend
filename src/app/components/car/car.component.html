@@ -26,14 +26,36 @@
     </div>
   </div>
   <div class="row" style="margin-top: 5px" *ngIf="dataLoaded == true">
-    <div *ngFor="let car of cars" class="card" style="width: 25rem">
-      <img
-        src="{{ imageBasePath }}{{ car.imagePath }}"
+    <div *ngFor="let car of cars;index as i " class="card" style="width: 25rem">
+      <!-- <img
+        src="{{ imageBasePath }}{{ car.imagePath[0] }}"
         class="card-img-top"
         width="320"
         height="200"
         alt="{{ car.description }}"
-      />
+      /> -->
+      <div id="carouselExampleIndicators" class="carousel" data-bs-ride="carousel">
+        <!-- <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>  -->
+        <div class="carousel">
+          <div *ngFor="let image of car.imagePath;index as i;first as firstImage" class="carousel-item" [ngClass]="{active:firstImage}">
+            <img src="{{imageBasePath}}{{image}}" class="d-block w-100" alt="...">
+
+          </div>       
+           <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button> -->
+        </div>
+       
+      </div>
       <div class="card-body">
         <h5 class="card-title d-flex justify-content-center">
           {{ car.carName }}
