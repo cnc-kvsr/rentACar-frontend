@@ -9,8 +9,12 @@ import { ColorService } from 'src/app/services/color.service';
 })
 export class ColorComponent implements OnInit {
   colors:Color[]=[];
+  dataLoaded=false;
+  currentColor:Color;
 
   constructor(private colorService:ColorService) { }
+  title="Renk Seçenekleri"
+  colorFilterText=""
 
   ngOnInit(): void {
     this.getColors();
@@ -19,7 +23,18 @@ export class ColorComponent implements OnInit {
   getColors(){
     this.colorService.getColors().subscribe(response =>{
       this.colors=response.data
+      this.dataLoaded=true;
     })
+    }
+    setCurrentColor(color:Color){
+      this.currentColor=color;
+    }
+    getCurrentColorClass(color:Color) {
+      if(color==this.currentColor){
+        return "list-group-item active"
+      }else{
+        return "list-group-item"
+      }
     }
 
 }

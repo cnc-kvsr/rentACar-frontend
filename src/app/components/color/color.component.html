@@ -1,5 +1,24 @@
 <ul class="list-group">
   <thead>
-    <li class="list-group-item">RENKLER</li>
-  </thead><br>
-    <li *ngFor="let color of colors" class="list-group-item list-group-item-light">{{color.colorName}}</li>
+    <li class="list-group-item">{{ title }}</li>
+  </thead>
+  <div class="mb-3">
+    <input
+      class="form-control"
+      id="colorName"
+      placeholder="Arama metninizi giriniz"
+      [(ngModel)]="colorFilterText"
+    />
+    <div *ngIf="colorFilterText" class="form-text">
+      Şu an <strong>{{ colorFilterText }}</strong> aradınız
+    </div>
+  </div>
+  <li
+    (click)="setCurrentColor(color)"
+    routerLink="/cars/color/{{color.colorId}}"
+    *ngFor="let color of colors | colorFilter: colorFilterText"
+    [class]="getCurrentColorClass(color)"
+  >
+    {{ color.colorName }}
+  </li>
+</ul>

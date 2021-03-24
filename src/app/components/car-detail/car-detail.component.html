@@ -1,0 +1,93 @@
+<!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button *ngFor="let carImage of carImages;let i=index" type="button" data-bs-target="#carouselExampleIndicators" 
+      attr.data-bs-slide-to="{{i}}" class="getButtonClass(carImage)" aria-current="true" aria-label="Slide 1"></button>
+      </div>
+    <div class="carousel-inner">
+      <div *ngFor="let carImage of carImages" class="getCurrentCarImageClass(carImage)">
+        <img [src]="imageBasePath+carImage.imagePath" class="d-block w-100" alt="carImage">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+  <table *ngIf="dataLoaded != false" class="table table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Marka</th>
+        <th>Model</th>
+        <th>Yıl</th>
+        <th>Günlük Fiyat</th>
+      </tr>
+    </thead>
+
+    <tr *ngFor="let car of cars ">
+      <td>{{ car.carId }}</td>
+      <td>{{ car.carName }}</td>
+      <td>{{ car.description }}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ car.dailyPrice | currency:"₺"}}</td>
+    </tr>
+  </table> -->
+
+  <h3 class="d-flex justify-content-center">CAR DETAILS</h3>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button *ngFor="let image of carImages;let i = index" type="button" data-bs-target="#carouselExampleIndicators" attr.data-bs-slide-to="{{i}}" [class]="getButtonClass(image)" aria-current="true" aria-label="Slide 1"></button>
+      <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" [class]="getButtonClass(image)" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" [class]="getButtonClass(image)" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" [class]="getButtonClass(image)" aria-label="Slide 3"></button> -->
+    </div>
+    <div class="carousel-inner">
+      <div *ngFor="let image of carImages" [class]="getCurrentCarImageClass(carImage)">
+        <img src="{{imageBasePath}}{{image.imagePath}}" class="d-block w-100" width="640" height="480"  alt="Image">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="table-responsive-md">
+    <table *ngIf="dataLoaded==true" class="table table-striped table-hover table-bordered">
+      <thead>
+          <tr>
+              <th>Brand</th>
+              <th>Color</th>
+              <th>Model Year</th>
+              <th>Daily Price</th>
+              <th>Description</th>
+              <th>Function</th>
+    
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let car of cars">
+              <td>{{car.brandName}}</td>
+              <td>{{car.colorName}}</td>
+              <td>{{car.modelYear}}</td>
+              <td>{{car.dailyPrice}}</td>
+              <td>{{car.description}}</td>
+              <td><app-rental></app-rental></td>
+                <!-- <td><button routerLink="/rental/{{car.carId}}" type="button" class="btn btn-success">Rent</button></td>
+         -->
+          </tr>
+      </tbody>
+    </table>
+  </div>
+
+    <br>
+<hr>

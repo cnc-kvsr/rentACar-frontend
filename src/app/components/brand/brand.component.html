@@ -1,13 +1,38 @@
-<ul class="list-group">
-  <thead>
-    <li class="list-group-item">MARKALAR</li>
-  </thead><br>
-    <li *ngFor="let brand of brands" class="list-group-item list-group-item-light">{{brand.brandName}}</li>
-   
-   
-   
-   
-  
+<div>
+  <div>
+    <ul class="list-group">
       
-     
-    
+      <thead>
+        <li *ngIf="brands; else noBrand" class="list-group-item">
+          {{ title }}
+        </li>
+      </thead>
+      <div class="mb-3">
+        <input
+          class="form-control"
+          id="brandName"
+          placeholder="Arama metninizi giriniz"
+          [(ngModel)]="brandFilterText"
+        />
+        <div *ngIf="brandFilterText" class="form-text">
+          Şu an <strong>{{ brandFilterText }}</strong> aradınız
+        </div>
+      </div>
+      <div class="row">
+        <ng-template #noBrand>
+          <div class="alert alert-primary" role="alert">
+            Bu markada bir aracımız yoktur!
+          </div>
+        </ng-template>
+        <li [class]="getAllBrandClass()" routerLink="/cars">Tüm Araçlar </li>
+        <li (click)="setCurrentBrand(brand)"
+        routerLink="/cars/brand/{{brand.brandId}}"
+          *ngFor="let brand of brands | brandFilter:brandFilterText"
+          [class]="getCurrentBrandClass(brand)"
+        >
+          {{ brand.brandName }}
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>
