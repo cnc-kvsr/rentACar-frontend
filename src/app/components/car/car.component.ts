@@ -19,7 +19,7 @@ export class CarComponent implements OnInit {
   dataLoaded = false;
   imageBasePath = environment.baseUrl;
   carImage: CarImage;
-
+  carFilterText = '';
 
   constructor(
     private carService: CarService,
@@ -28,8 +28,8 @@ export class CarComponent implements OnInit {
     private carImageService:CarImageService
   ) {}
 
-  title = 'ARABA LİSTESİ';
-  carFilterText = '';
+  
+  
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {

@@ -1,16 +1,19 @@
 <ul class="list-group">
-  <thead>
-    <li class="list-group-item">{{ title }}</li>
-  </thead>
-  <div class="mb-3">
-    <input
-      class="form-control"
-      id="colorName"
-      placeholder="Arama metninizi giriniz"
-      [(ngModel)]="colorFilterText"
-    />
-    <div *ngIf="colorFilterText" class="form-text">
-      Şu an <strong>{{ colorFilterText }}</strong> aradınız
+ 
+
+  <div>
+    <div class="mb-3">
+      <label for="colorFilterText" class="form-label">Renk Seçenekleri</label>
+      <input
+        type="text"
+        [(ngModel)]="colorFilterText"
+        class="form-control"
+        id="carName"
+        placeholder="Arama metninizi giriniz"
+      />
+    </div>
+    <div *ngIf="colorFilterText" class="alert alert-success">
+      <strong>{{ colorFilterText }}</strong> aradınız.
     </div>
   </div>
   <li

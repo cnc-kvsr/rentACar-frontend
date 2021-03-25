@@ -11,10 +11,11 @@ export class ColorComponent implements OnInit {
   colors:Color[]=[];
   dataLoaded=false;
   currentColor:Color;
+  colorFilterText=""
 
   constructor(private colorService:ColorService) { }
-  title="Renk Seçenekleri"
-  colorFilterText=""
+  
+  
 
   ngOnInit(): void {
     this.getColors();

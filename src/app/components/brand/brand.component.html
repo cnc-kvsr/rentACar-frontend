@@ -1,21 +1,19 @@
 <div>
   <div>
     <ul class="list-group">
-      
-      <thead>
-        <li *ngIf="brands; else noBrand" class="list-group-item">
-          {{ title }}
-        </li>
-      </thead>
-      <div class="mb-3">
-        <input
-          class="form-control"
-          id="brandName"
-          placeholder="Arama metninizi giriniz"
-          [(ngModel)]="brandFilterText"
-        />
-        <div *ngIf="brandFilterText" class="form-text">
-          Şu an <strong>{{ brandFilterText }}</strong> aradınız
+      <div>
+        <div class="mb-3">
+          <label for="brandFilterText" class="form-label">Marka Seçenekleri</label>
+          <input
+            type="text"
+            [(ngModel)]="brandFilterText"
+            class="form-control"
+            id="carName"
+            placeholder="Arama metninizi giriniz"
+          />
+        </div>
+        <div *ngIf="brandFilterText" class="alert alert-success">
+          <strong>{{ brandFilterText }}</strong> aradınız.
         </div>
       </div>
       <div class="row">
