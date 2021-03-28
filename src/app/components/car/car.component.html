@@ -23,7 +23,7 @@
     </div>
   </div>
   <div class="row" style="margin-top: 5px" *ngIf="dataLoaded == true">
-    <div *ngFor="let car of cars; index as i" class="card" style="width: 25rem">
+    <div *ngFor="let car of cars | carFilter:carFilterText; index as i" class="card" style="width: 25rem">
       <!-- <img
         src="{{ imageBasePath }}{{ car.imagePath[0] }}"
         class="card-img-top"
@@ -72,8 +72,8 @@
         </p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Brand: {{ car.brandId }}</li>
-        <li class="list-group-item">Color: {{ car.colorId }}</li>
+        <!-- <li class="list-group-item">Brand: {{ car.brandId }}</li>
+        <li class="list-group-item">Color: {{ car.colorId }}</li> -->
         <li class="list-group-item">Model Year: {{ car.modelYear }}</li>
         <li class="list-group-item">
           Daily Price: {{ car.dailyPrice | currency: "₺" }}
@@ -86,11 +86,11 @@
             type="button"
             class="btn btn-primary"
           >
-            Details
+            Detay
           </button>
         </section>
         <section style="float: right">
-          <button type="button" class="btn btn-primary">Rent</button>
+          <button (click)="addToCart(car)" type="button" class="btn btn-primary">Kirala</button>
         </section>
       </div>
     </div>

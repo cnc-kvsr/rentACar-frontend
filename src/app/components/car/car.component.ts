@@ -6,6 +6,8 @@ import { CarService } from 'src/app/services/car.service';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { CarImageService } from 'src/app/services/car-image.service';
+import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-car',
@@ -25,11 +27,10 @@ export class CarComponent implements OnInit {
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
     private http:HttpClient,
-    private carImageService:CarImageService
+    private carImageService:CarImageService,
+    private toastrService:ToastrService,
+    private cartService:CartService
   ) {}
-
-  
-  
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -73,6 +74,10 @@ export class CarComponent implements OnInit {
       console.log(response.data);
       this.dataLoaded = true;
     });
+  }
+  addToCart(car:Car){
+    this.toastrService.success("Araç Kiralandı.",car.carName)
+    this.cartService.addToCart(car);
   }
 
 }

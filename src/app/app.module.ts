@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,8 @@ import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 
+import { ToastrModule } from 'ngx-toastr';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,13 +31,17 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
     CarFilterPipe,
     ColorFilterPipe,
     BrandFilterPipe,
-    CarDetailComponent
+    CarDetailComponent,
+    CartSummaryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({})
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
