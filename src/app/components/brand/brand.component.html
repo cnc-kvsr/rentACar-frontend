@@ -1,36 +1,22 @@
-<div>
-  <div>
-    <ul class="list-group">
-      <div>
-        <div class="mb-3">
-          <label for="brandFilterText" class="form-label">Marka Seçenekleri</label>
-          <input
-            type="text"
-            [(ngModel)]="brandFilterText"
-            class="form-control"
-            id="brandName"
-            placeholder="Arama metninizi giriniz"
-          />
-        </div>
-        <div *ngIf="brandFilterText" class="alert alert-success">
-          <strong>{{ brandFilterText }}</strong> aradınız.
-        </div>
-      </div>
-      <div class="row">
-        <ng-template #noBrand>
-          <div class="alert alert-primary" role="alert">
-            Bu markada bir aracımız yoktur!
-          </div>
-        </ng-template>
-        <li [class]="getAllBrandClass()" routerLink="/cars">Tüm Araçlar </li>
-        <li (click)="setCurrentBrand(brand)"
-        routerLink="/cars/brand/{{brand.brandId}}"
-          *ngFor="let brand of brands | brandFilter:brandFilterText"
-          [class]="getCurrentBrandClass(brand)"
-        >
-          {{ brand.brandName }}
-        </li>
-      </div>
-    </ul>
+<form>
+  <div class="mb-3">
+    <span class="d-block p-2 bg-info text-white">Marka Seçenekleri</span>
+    <select
+      (change)="getCurrentBrandClass(currentBrand)"
+      [(ngModel)]="currentBrand"
+      name="brand"
+      class="form-select form-select-sm"
+      aria-label="Markalar"
+    >
+      <option [ngValue]="getAllBrandClass" [selected]="getAllBrandClass()">
+        Tüm Markalar
+      </option>
+      <option
+        [value]="brand"
+        *ngFor="let brand of brands | brandFilter: brandFilterText"
+      >
+        {{ brand.brandName }}
+      </option>
+    </select>
   </div>
-</div>
+</form>

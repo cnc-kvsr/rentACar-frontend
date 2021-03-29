@@ -1,27 +1,22 @@
-<ul class="list-group">
- 
-
-  <div>
-    <div class="mb-3">
-      <label for="colorFilterText" class="form-label">Renk Seçenekleri</label>
-      <input
-        type="text"
-        [(ngModel)]="colorFilterText"
-        class="form-control"
-        id="colorName"
-        placeholder="Arama metninizi giriniz"
-      />
-    </div>
-    <div *ngIf="colorFilterText" class="alert alert-success">
-      <strong>{{ colorFilterText }}</strong> aradınız.
-    </div>
+<form>
+  <div class="mb-3">
+    <span class="d-block p-2 bg-info text-white">Renk Seçenekleri</span>
+    <select
+      [(ngModel)]="currentColor"
+      (change)="setCurrentColor()"
+      name="color"
+      class="form-select form-select-sm"
+      aria-label="Renkler"
+    >
+      <option [selected]="getAllColorClass()" [ngValue]="getAllColorClass">
+        Tüm Renkler
+      </option>
+      <option
+        [value]="color"
+        *ngFor="let color of colors | colorFilter: colorFilterText"
+      >
+        {{ color.colorName }}
+      </option>
+    </select>
   </div>
-  <li
-    (click)="setCurrentColor(color)"
-    routerLink="/cars/color/{{color.colorId}}"
-    *ngFor="let color of colors | colorFilter: colorFilterText"
-    [class]="getCurrentColorClass(color)"
-  >
-    {{ color.colorName }}
-  </li>
-</ul>
+</form>
