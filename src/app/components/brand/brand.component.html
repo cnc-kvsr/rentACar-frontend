@@ -2,7 +2,7 @@
   <div class="mb-3">
     <span class="d-block p-2 bg-info text-white">Marka Seçenekleri</span>
     <select
-      (change)="getCurrentBrandClass(currentBrand)"
+      (change)="setCurrentBrand()"
       [(ngModel)]="currentBrand"
       name="brand"
       class="form-select form-select-sm"
@@ -11,10 +11,7 @@
       <option [ngValue]="getAllBrandClass" [selected]="getAllBrandClass()">
         Tüm Markalar
       </option>
-      <option
-        [value]="brand"
-        *ngFor="let brand of brands | brandFilter: brandFilterText"
-      >
+      <option [ngValue]="brand" *ngFor="let brand of brands">
         {{ brand.brandName }}
       </option>
     </select>

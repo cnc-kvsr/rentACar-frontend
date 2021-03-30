@@ -15,7 +15,8 @@ export class BrandComponent implements OnInit {
   currentBrand: Brand;
   dataLoaded=false;
   brandFilterText = '';
-
+  Filters = {};
+  
   constructor(
     private brandService: BrandService,
     private router:Router,

@@ -14,7 +14,7 @@ export class ColorComponent implements OnInit {
   dataLoaded = false;
   currentColor: Color;
   colorFilterText = '';
-
+  Filters = {brandId: '', colorId: ''};
   constructor(
     private colorService: ColorService,
     private router:Router,

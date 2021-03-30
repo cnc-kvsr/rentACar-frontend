@@ -12,8 +12,8 @@
         Tüm Renkler
       </option>
       <option
-        [value]="color"
-        *ngFor="let color of colors | colorFilter: colorFilterText"
+        [ngValue]="color"
+        *ngFor="let color of colors"
       >
         {{ color.colorName }}
       </option>
