@@ -11,6 +11,7 @@ import { ColorComponent } from './components/color/color.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { CarComponent } from './components/car/car.component';
+import {SidebarComponent} from './components/sidebar/sidebar.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
@@ -27,6 +28,7 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
     CustomerComponent,
     NaviComponent,
     CarComponent,
+    SidebarComponent,
     RentalComponent,
     CarFilterPipe,
     ColorFilterPipe,
