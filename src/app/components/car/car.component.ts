@@ -26,15 +26,17 @@ export class CarComponent implements OnInit {
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
-    private http:HttpClient,
-    private carImageService:CarImageService,
-    private toastrService:ToastrService,
-    private cartService:CartService
+    private http: HttpClient,
+    private carImageService: CarImageService,
+    private toastrService: ToastrService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      if (params['brandId']) {
+      if (params['brandId'] && ['colorId']) {
+        this.getCarsByBrandIdAndColorId(params['brandId'], params['colorId']);
+      } else if (params['brandId']) {
         this.getCarsByBrandId(params['brandId']);
       } else if (params['colorId']) {
         this.getCarsByColorId(params['colorId']);
@@ -68,6 +70,14 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
+  getCarsByBrandIdAndColorId(brandId: number, colorId: number) {
+    this.carService
+      .getCarsByBrandIdAndColorId(brandId, colorId)
+      .subscribe((response) => {
+        this.cars = response.data;
+        this.dataLoaded = response.success;
+      });
+  }
   getCarDetails(carId: number) {
     this.carService.getCarDetails(carId).subscribe((response) => {
       this.cars = response.data;
@@ -75,9 +85,8 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
-  addToCart(car:Car){
-    this.toastrService.success("Araç Kiralandı.",car.carName)
+  addToCart(car: Car) {
+    this.toastrService.success('Araç Kiralandı.', car.carName);
     this.cartService.addToCart(car);
   }
-
 }
