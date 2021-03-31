@@ -33,6 +33,7 @@ export class CarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getCarImages();
     this.activatedRoute.params.subscribe((params) => {
       if (params['brandId'] && ['colorId']) {
         this.getCarsByBrandIdAndColorId(params['brandId'], params['colorId']);
@@ -76,6 +77,7 @@ export class CarComponent implements OnInit {
       .subscribe((response) => {
         this.cars = response.data;
         this.dataLoaded = response.success;
+        this.getCarImages();
       });
   }
   getCarDetails(carId: number) {
@@ -85,8 +87,17 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
+
+  getCarImages() {
+    this.carImageService.getCarImages().subscribe((response) => {
+      this.carImages = response.data;
+      this.dataLoaded = true;
+    });
+  }
+
   addToCart(car: Car) {
     this.toastrService.success('Araç Kiralandı.', car.carName);
     this.cartService.addToCart(car);
   }
+
 }
