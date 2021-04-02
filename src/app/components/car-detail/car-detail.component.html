@@ -1,65 +1,97 @@
-<div
-  id="carouselExampleControls"
-  class="carousel slide border border-dark"
-  data-bs-ride="carousel"
->
-  <div class="carousel-inner">
-    <div
-      class="carousel-item"
-      *ngFor="let image of carImages; index as i; first as firstImage"
-      [ngClass]="{ active: firstImage }"
-    >
-      <img
-        src="{{ imageBasePath }}{{ image.imagePath }}"
-        class="d-block w-100"
-        alt="image.imagePath"
-      />
+<div class="container">
+  <div
+    id="carouselExampleControls"
+    class="carousel slide border border-dark"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div
+        class="carousel-item"
+        *ngFor="let image of carImages; index as i; first as firstImage"
+        [ngClass]="{ active: firstImage }"
+      >
+        <img
+          src="{{ imageBasePath }}{{ image.imagePath }}"
+          class="d-block w-50"
+          alt="image.imagePath"
+        />
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExampleControls"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExampleControls"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  <div class="table-responsive-md">
-    <table
-      *ngIf="dataLoaded == true"
-      class="table table-striped table-hover table-bordered"
-    >
-      <thead>
-        <tr>
-          <th>Brand</th>
-          <th>Color</th>
-          <th>Model Year</th>
-          <th>Daily Price</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngIf="carDetails">
-          <td>{{ carDetails.brandName }}</td>
-          <td>{{ carDetails.colorName }}</td>
-          <td>{{ carDetails.modelYear }}</td>
-          <td>{{ carDetails.dailyPrice | currency: "₺" }}</td>
-          <td>{{ carDetails.description }}</td>
+    
+    <div class="table-responsive-md">
+      <table
+        *ngIf="dataLoaded == true"
+        class="table table-striped table-hover table-bordered"
+      >
+        <thead>
+          <tr>
+            <th>Brand</th>
+            <th>Color</th>
+            <th>Model Year</th>
+            <th>Daily Price</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="carDetails">
+            <td>{{ carDetails.brandName }}</td>
+            <td>{{ carDetails.colorName }}</td>
+            <td>{{ carDetails.modelYear }}</td>
+            <td>{{ carDetails.dailyPrice | currency: "₺" }}</td>
+            <td>{{ carDetails.description }}</td>
 
-          <!-- <td><button routerLink="/rental/{{car.carId}}" type="button" class="btn btn-success">Rent</button></td> -->
-        </tr>
-      </tbody>
-    </table>
+            <!-- <td><button routerLink="/rental/{{car.carId}}" type="button" class="btn btn-success">Rent</button></td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="form-group col">
+      <label for="rentDate" class="col-3 col-form-label sizes"
+        >Alış Tarihi:</label
+      >
+      <div class="col-6">
+        <input
+          class="form-control"
+          type="datetime-local"
+          id="rentDate"
+          [(ngModel)]="rentDate"
+        />
+      </div>
+    </div>
+    <div class="form-group col">
+      <label for="returnDate" class="col-3 col-form-label sizes"
+        >Teslim Tarihi:</label
+      >
+      <div class="col-6">
+        <input
+          class="form-control"
+          type="datetime-local"
+          id="returnDate"
+          [(ngModel)]="returnDate"
+        />
+      </div>
+    </div>
   </div>
 
   <br />

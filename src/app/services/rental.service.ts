@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
+import { RentalDetailDto } from '../models/rentalDetailDto';
+import { ResponseModel } from '../models/responseModel';
 
 
 @Injectable({
@@ -13,7 +15,15 @@ export class RentalService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getRentals(): Observable<ListResponseModel<Rental>>{
-    return this.httpClient.get<ListResponseModel<Rental>>(this.apiUrl);
+  getRentals(): Observable<ListResponseModel<RentalDetailDto>>{
+    return this.httpClient.get<ListResponseModel<RentalDetailDto>>(this.apiUrl);
+  }
+  checkCarStatus(rental:Rental):Observable<ResponseModel>{
+    let newPath=this.apiUrl+"rentals/checkcarstatus";
+    return this.httpClient.post<ResponseModel>(newPath,rental);
+  }
+  add(rental:Rental):Observable<ResponseModel>{
+    let newPath=this.apiUrl+"rentals/add";
+    return this.httpClient.post<ResponseModel>(newPath,rental);
   }
 }
