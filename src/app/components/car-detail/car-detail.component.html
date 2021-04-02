@@ -35,7 +35,7 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    
+
     <div class="table-responsive-md">
       <table
         *ngIf="dataLoaded == true"
@@ -63,37 +63,36 @@
         </tbody>
       </table>
     </div>
-  </div>
-
-  <div class="container">
-    <div class="form-group col">
-      <label for="rentDate" class="col-3 col-form-label sizes"
-        >Alış Tarihi:</label
-      >
-      <div class="col-6">
-        <input
-          class="form-control"
-          type="datetime-local"
-          id="rentDate"
-          [(ngModel)]="rentDate"
-        />
+    <div class="row">
+      <div class="form-group col">
+        <label for="rentDate" class="col-3 col-form-label sizes"
+          >Alış Tarihi:</label
+        >
+        <div class="col-6">
+          <input
+            class="form-control"
+            type="datetime-local"
+            id="rentDate"
+            [(ngModel)]="rentDate"
+          />
+        </div>
+      </div>
+      <div class="form-group col">
+        <label for="returnDate" class="col-3 col-form-label sizes"
+          >Teslim Tarihi:</label
+        >
+        <div class="col-6">
+          <input
+            class="form-control"
+            type="datetime-local"
+            id="returnDate"
+            [(ngModel)]="returnDate"
+          />
+        </div>
       </div>
     </div>
-    <div class="form-group col">
-      <label for="returnDate" class="col-3 col-form-label sizes"
-        >Teslim Tarihi:</label
-      >
-      <div class="col-6">
-        <input
-          class="form-control"
-          type="datetime-local"
-          id="returnDate"
-          [(ngModel)]="returnDate"
-        />
-      </div>
+    <div class="col-6">
+      <button type="button" class="btn btn-primary">Kirala</button>
     </div>
   </div>
-
-  <br />
-  <hr />
 </div>
